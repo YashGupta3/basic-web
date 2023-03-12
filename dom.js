@@ -13,8 +13,8 @@
 // header.style.border = "solid 2px red"
 
 // Get Element by Class Names
-let item = document.getElementsByClassName("list-group-item")
-console.log(item);
+// let item = document.getElementsByClassName("list-group-item")
+// console.log(item);
 // // item[0].style.color = "red"
 // for (i=0; i<item.length; i++){
 //     item[i].style.color = "red"
@@ -23,7 +23,11 @@ console.log(item);
 
 // Get element by tag name
 let l = document.getElementsByTagName('li')
-l[0].style.color = "blue"
+// l[0].style.color = "blue"
+console.log(l);
+for(let i=0; i<l.length; i++){
+    l[i].style.color = "red"
+}
 
 // Query Selector
 // let header = document.querySelector("#main-header");
