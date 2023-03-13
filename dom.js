@@ -43,18 +43,58 @@
 //     odd[i].style.backgroundColor = "green"
 // }
 
-let item = document.querySelector(".list-group")
-// console.log(item);
-console.log(item.childNodes);
-console.log(item.firstElementChild);
-console.log(item.lastElementChild);
-console.log(item.nextElementSibling);
-console.log(item.previousElementSibling);
-let newElement = document.createElement("yash")
-newElement.className = "yash"
-newElement.id = "yash"
-console.log(newElement);
-let textnode = document.createTextNode("yashtext")
-textnode.className = "newClass"
-console.log(textnode);
+// let item = document.querySelector(".list-group")
+// // console.log(item);
+// console.log(item.childNodes);
+// console.log(item.firstElementChild);
+// console.log(item.lastElementChild);
+// console.log(item.nextElementSibling);
+// console.log(item.previousElementSibling);
+// let newElement = document.createElement("yash")
+// newElement.className = "yash"
+// newElement.id = "yash"
+// console.log(newElement);
+// let textnode = document.createTextNode("yashtext")
+// textnode.className = "newClass"
+// console.log(textnode);
 
+let form = document.getElementById("addForm")
+let itemList = document.getElementById("items");
+
+form.addEventListener('submit', additem);
+
+itemList.addEventListener('click', removeItem)
+
+function additem(e){
+    e.preventDefault();
+    let newItem = document.getElementById("item").value;
+    let li = document.createElement('li');
+    li.className = "list-group-item"
+    // console.log(li);
+    // console.log(1);
+    li.appendChild(document.createTextNode(newItem));
+
+    let deletebtn = document.createElement('button')
+    let editbtn = document.createElement('button')
+    deletebtn.className = 'btn btn-danger btn-sm float-right delete'
+    editbtn.className = 'btn btn-danger btn-sm float-right delete'
+
+    deletebtn.appendChild(document.createTextNode('x'))
+
+    editbtn.appendChild(document.createTextNode('e'))
+
+    li.appendChild(editbtn)
+    li.appendChild(deletebtn)
+
+    itemList.appendChild(li)
+
+}
+
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure ??')){
+            let li = e.target.parentElement;
+            itemList.removeChild(li);
+        }
+    }
+}
