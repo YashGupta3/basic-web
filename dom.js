@@ -61,27 +61,33 @@
 let form = document.getElementById("addForm")
 let itemList = document.getElementById("items");
 
+let filter = document.getElementById('filter')
+
 form.addEventListener('submit', additem);
 
 itemList.addEventListener('click', removeItem)
 
+filter.addEventListener('keyup', filterItems)
+
 function additem(e){
     e.preventDefault();
     let newItem = document.getElementById("item").value;
+    let newItem2 = document.getElementById("item2").value;
+    let newItemText = newItem + newItem2
     let li = document.createElement('li');
     li.className = "list-group-item"
     // console.log(li);
     // console.log(1);
-    li.appendChild(document.createTextNode(newItem));
+    li.appendChild(document.createTextNode(newItemText));
 
     let deletebtn = document.createElement('button')
     let editbtn = document.createElement('button')
     deletebtn.className = 'btn btn-danger btn-sm float-right delete'
-    editbtn.className = 'btn btn-danger btn-sm float-right delete'
+    editbtn.className = 'btn btn-primary btn-sm float-right delete'
 
     deletebtn.appendChild(document.createTextNode('x'))
 
-    editbtn.appendChild(document.createTextNode('e'))
+    editbtn.appendChild(document.createTextNode('edit'))
 
     li.appendChild(editbtn)
     li.appendChild(deletebtn)
@@ -97,4 +103,19 @@ function removeItem(e){
             itemList.removeChild(li);
         }
     }
+}
+
+function filterItems(e){
+    text = e.target.value.toLowerCase();
+    console.log(text);
+    let items = itemList.getElementsByTagName('li')
+    Array.from(items).forEach((item)=>{
+        let itemName = item.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text) != -1){
+            item.style.display = 'block'
+        }else{
+            item.style.display = 'none'
+        }
+
+    })
 }
