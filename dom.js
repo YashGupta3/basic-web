@@ -22,12 +22,12 @@
 // }
 
 // Get element by tag name
-let l = document.getElementsByTagName('li')
-// l[0].style.color = "blue"
-console.log(l);
-for(let i=0; i<l.length; i++){
-    l[i].style.color = "red"
-}
+// let l = document.getElementsByTagName('li')
+// // l[0].style.color = "blue"
+// console.log(l);
+// for(let i=0; i<l.length; i++){
+//     l[i].style.color = "red"
+// }
 
 // Query Selector
 // let header = document.querySelector("#main-header");
@@ -37,8 +37,24 @@ for(let i=0; i<l.length; i++){
 // let item3 = document.querySelector(".list-group-item:nth-child(3)")
 // // item3.style.display = "none"
 
-let odd = document.querySelectorAll("li:nth-child(odd)")
+// let odd = document.querySelectorAll("li:nth-child(odd)")
 
-for(let i=0; i<odd.length; i++){
-    odd[i].style.backgroundColor = "green"
-}
+// for(let i=0; i<odd.length; i++){
+//     odd[i].style.backgroundColor = "green"
+// }
+
+let item = document.querySelector(".list-group")
+// console.log(item);
+console.log(item.childNodes);
+console.log(item.firstElementChild);
+console.log(item.lastElementChild);
+console.log(item.nextElementSibling);
+console.log(item.previousElementSibling);
+let newElement = document.createElement("yash")
+newElement.className = "yash"
+newElement.id = "yash"
+console.log(newElement);
+let textnode = document.createTextNode("yashtext")
+textnode.className = "newClass"
+console.log(textnode);
+
